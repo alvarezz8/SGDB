@@ -1,1 +1,37 @@
 
+diseñar una BD que permita introducir información al respecto y que usaremos para algún desarrollo de software posterior. En el proceso de análisis descubrimos que la Universidad de Zaragoza dispone de un repositorio de datos abiertos (https://zaguan.unizar.es) con información al respecto, por lo que hemos decidido utilizarla. Queremos disponer en nuestro sistema de información de los datos de oferta académica de la universidad y los resultados académicos de sus estudios. Tras revisar y analizar el catálogo de datos del repositorio hemos decidido construir nuestra BD a partir de la siguiente información del repositorio:
+  ● Oferta y ocupación de plazas (de estudios de grado).
+  ● Resultados de las titulaciones (de estudios de grado).
+  ● Notas de corte definitivas del cupo general a estudios de grado.
+  ● Acuerdos de movilidad de estudiantes ERASMUS y SICUE.
+  ● Alumnos egresados por titulación. Este fichero presenta datos agregados por sexo y tipo de egreso, sólo queremos obtener los alumnos que abandonan voluntariamente el estudio cada año.
+  ● Rendimiento por asignatura y titulación. Deseamos disponer de los datos de los grados de EINA y EUPT.
+
+Únicamente trataremos la información de los estudios de grado.
+Trataremos los datos de los tres últimos años con resultados registrados: 2019, 2020 y 2021.
+Como es habitual en este tipo de datos provenientes de un datawarehouse, facilitan información desnormalizada. La práctica consiste en analizar y procesar la información de los ficheros indicados, importando la información en una base de datos normalizada que diseñemos. Después se solicita implementar alguna consulta y trigger en la BD.
+La base de datos recogerá información de interés para asesorar a nuestros alumnos, fundamentalmente:
+  ● Estudios que ofrece la universidad cada año académico, así como sus resultados, notas de corte, oferta y ocupación de plazas o el número anual de abandonos voluntarios.
+  ● Centros que imparten estos estudios y convenios de movilidad de los que disponen cada año.
+
+Trabajo a realizar:
+Bash script para PostgreSQL que:
+  a. Descarga datos necesarios del repositorio. 
+  b. Crea BD diseñada en PostgresQL con usuario específico para su gestión.
+  c. Utilizando esa BD y usuario creados, procesa e importa los datos descargados.
+  d. Implementa en nuestra BD un TRIGGER que registre en una tabla auxiliar todos las operaciones de borrado y actualización de datos en una cualquiera de las tablas de nuestro esquema, guardando operación, usuario, fecha y clave primaria afectada.
+  e. Lanza consulta SQL que devuelva los dos estudios de cada localidad con mayor índice de ocupación en el 2021.
+  f. Lanza consulta SQL que devuelva la universidad que más alumnos recibe de cada centro en el 2021.
+  g. Crear una vista que incluya las 10 asignaturas con mayor y menor tasa de éxito en el Grado en Ingeniería informática tanto de EINA como de EUPT.
+  h. Crear usuario “profesor” con permisos de lectura y facilitar la contraseña en la documentación, comprobando su correcto funcionamiento previamente.
+
+
+Bash script para MySQL.
+  a. Descarga datos necesarios del repositorio.
+  b. Crea BD diseñada en MySQL con usuario específico para su gestión.
+  c. Utilizando esa BD y usuario creados, procesa e importa los datos descargados.
+  d. Implementa en nuestra BD un TRIGGER que impida borrar datos en una de nuestras tablas.
+  e. Lanza consulta SQL que devuelva los dos estudios de cada localidad con mayor índice de ocupación en el 2020.
+  f. Lanza consulta SQL que devuelva la universidad que más alumnos recibe de cada centro en el 2020.
+  g. Crear una vista que incluya de cada año tratado, las 10 asignaturas con mayor y menor tasa de éxito en el Grado en Ingeniería Informática tanto de EINA como de EUPT.
+  h. Crear usuario “profesor” con permisos de lectura y facilitar la contraseña en la documentación, comprobando su correcto funcionamiento previamente.
